@@ -59,7 +59,7 @@
 <template>
     <main class="main" id="main">
        
-        <div class="row">
+        <div class="row first">
             <div class="col-sm-12 col-md-12">
                 <div class="card" style="background-color:white">
                     <div class="card-header sticky-top layer-2">
