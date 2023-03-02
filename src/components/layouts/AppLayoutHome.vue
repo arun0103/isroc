@@ -6,7 +6,7 @@
           <div class="d-flex align-items-center justify-content-between" style="margin-left:10px">
             <a href="#" class="logo d-flex align-items-center">
               <img src="@/assets/logo.png" alt="" style="width:20px">
-              <span class="d-none d-lg-block">IS Admin</span>
+              <span class="d-none d-lg-block">IS Admin v1</span>
             </a>
           </div><!-- End Logo -->
 
