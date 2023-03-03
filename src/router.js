@@ -10,6 +10,7 @@ import Members from './components/views/Members.vue';
 import Clients from './components/views/Clients.vue';
 import AppLayoutHome from './components/layouts/AppLayoutHome.vue';
 import NewDevice from './components/device/New.vue';
+import DeviceDetail from './components/device/Detail.vue';
 import { markRaw } from "vue";
 
 const routes = [
@@ -79,7 +80,7 @@ const routes = [
   {
     path: '/device/detail/:id',
     name: 'device_detail',
-    component: markRaw(Dashboard),
+    component: markRaw(DeviceDetail),
     meta: { requiresAuth: true, layout: 'AppLayoutHome'  }
   }
 ];
