@@ -371,7 +371,7 @@ import router from '@/router'
             onResize() {
                 this.windowHeight = window.innerHeight
                 console.log('resized to'+ this.windowHeight)
-                if(this.windowHeight < 500)
+                if(this.windowHeight >window.innerWidth)
                     this.mobile_view = true
                 else
                     this.mobile_view = false
@@ -397,7 +397,7 @@ import router from '@/router'
         },
         mounted(){
             console.log("Home mounted.")
-            if(window.innerHeight < 500)
+            if(window.innerHeight >window.innerWidth)
                 this.mobile_view = true
             // get window height
             this.$nextTick(() => {
