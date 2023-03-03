@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Home from './components/views/Home.vue';
+import Devices from './components/views/Devices.vue';
 import Login from './components/Login.vue';
 import Reset from './components/Reset.vue';
 import ResetPassword from './components/ResetPassword.vue';
@@ -17,7 +17,7 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: markRaw(Home),
+    component: markRaw(Devices),
     meta: { requiresAuth: true, layout: 'AppLayoutHome' }
   },
   {
@@ -49,7 +49,7 @@ const routes = [
   {
     path: '/devices',
     name: 'devices',
-    component: markRaw(Home),
+    component: markRaw(Devices),
     meta: { requiresAuth: true, layout: 'AppLayoutHome'  }
   },
   {
