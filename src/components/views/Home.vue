@@ -90,7 +90,7 @@
                         </label>
                     </div>
                     <div class="card-body">
-                        <div class="row" >
+                        <div class="row" v-show="mobile_view">
                             <div class="card-group col-md-4" v-for="(device,key) in filteredDevices" :key="key">
                                 <div class="card">
                                     <div class="card-header">
@@ -170,6 +170,103 @@
 
                             </div>
                         </div>
+                        <div class="row" v-show="!mobile_view">
+                            <div class="col-sm-12 col-md-12">
+
+                                <div class="react-bootstrap-table table-responsive" style="width:100%">
+                                    <table class="table table-striped table-hover table-sm" style="font-size:14px !important">
+                                        <thead>
+                                            <tr>
+                                                <!-- <th data-field="check" data-sortable="false"><input class="form-check-input" type="checkbox" id="check_all"></th> -->
+                                                <th data-field="code" data-sortable="true">Device Name</th>
+                                                <th data-field="id" data-sortable="true">Device ID</th>
+                                                <th data-field="distributor" data-sortable="true">Distributor</th>
+                                                <th data-field="value1" data-sortable="true">Client </th>
+                                                <th data-field="value2" data-sortable="true">Type</th>
+                                                <!-- <th data-field="streams" data-sortable="true">Streams <i class="bi bi-info-circle" style="color:green"></i></th> -->
+                                                <th data-field="activation-date" data-sortable="true">Activation Date</th>
+                                                <th data-field="connection" data-sortable="true">Connection</th>
+                                                <th data-field="status" data-sortable="true">Status</th>
+                                                <th data-field="info" data-sortable="false"></th>
+                                            </tr>
+                                            <!-- <tr>
+                                                <th tabindex="0" aria-label="Device ID sortable" class="sortable text-nowrap">Device ID<span class="order-4"></span></th>
+                                                <th tabindex="1" aria-label="Client sortable" class="sortable">Client<span class="order-4"></span></th>
+                                                <th tabindex="2" aria-label="Asset sortable" class="sortable">Asset<span class="order-4"></span></th>
+                                                <th tabindex="3" aria-label="Stream(s) sortable" class="sortable d-none d-md-table-cell"><span style="display: flex;">Stream(s) <span class=""><i class="far fa-question-circle mx-1" id="icon-with-tooltip--1797539030"></i></span> <span class="order-4"></span></span></th>
+                                                <th tabindex="4" aria-label="Sample Rate Flow sortable" class="sortable"><span style="display: flex;">Sample Rate Flow <span class=""><i class="far fa-question-circle mx-1" id="icon-with-tooltip-1210011700"></i></span> <span class="order-4"></span></span></th>
+                                                <th tabindex="5" aria-label="Sample Rate Pressure sortable" class="sortable"><span style="display: flex;">Sample Rate Pressure <span class=""><i class="far fa-question-circle mx-1" id="icon-with-tooltip-719470182"></i></span> <span class="order-4"></span></span></th>
+                                                <th tabindex="6" aria-label="Health Status sortable" class="sortable"><span style="display: flex;">Health Status <span class=""><i class="far fa-question-circle mx-1" id="icon-with-tooltip-1656819792"></i></span> <span class="order-4"></span></span></th>
+                                            </tr> -->
+                                        </thead>
+                                        <tbody>
+                                            <tr class="align-middle">
+                                                <!-- <td><input class="form-check-input" type="checkbox" id="check_1"></td> -->
+                                                <td><a href="{{route('asset_dashboard','1') }}">Voltea Prototype 1 </a></td>
+                                                <td>1</td>
+                                                <td><a href="{{route('distributor','1') }}">ABC Distributor</a></td>
+                                                <td><a href="">ABC</a></td>
+                                                <td>HPC</td>
+                                                <td>1/12/2021</td>
+                                                <td style="text-align:center"><i class="ri ri-wifi-fill fa-lg" style="color:green"></i><span hidden>Online</span> </td>
+                                                <td style="text-align:center">
+                                                    <i class="bi bi-shield-fill-exclamation fa-lg" style="color:#ffc107"></i><span class="info_status" hidden>Warning</span>
+                                                    <!-- <i id="battery" class="bi bi-battery-full"></i> -->
+                                                </td>
+                                                <td>
+                                                    <a href=""><i class="link_asset_detail bi bi-vector-pen"></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr class="align-middle">
+                                                <!-- <td><input class="form-check-input" type="checkbox" id="check_2"></td> -->
+                                                <td>Voltea Prototype 2</td>
+                                                <td>2</td>
+                                                <td>XYZ Distributor</td>
+                                                <td>XYZ</td>
+                                                <td>Test Model</td>
+                                                <td>29/01/2022</td>
+                                                <td style="text-align:center"><i class="ri ri-wifi-off-fill fa-lg" style="color:red"></i><span hidden>Offline</span> </td>
+                                                <td style="text-align:center">
+                                                    <i class="bi bi-shield-fill-check fa-lg" style="color:green"></i><span class="info_status" hidden>OK</span>
+                                                    <!-- <i id="battery" class="bi bi-battery-half"></i> -->
+                                                </td>
+                                                <td>
+                                                    <i class="link_asset_detail bi bi-vector-pen"></i>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <!-- <tbody>
+                                            <tr class="align-middle">
+                                                <td>6B:39:67:01</td>
+                                                <td>Voltea</td>
+                                                <td><span>Kitchen sink  / <a href="/assets/644/dashboard">Voltea Kitchen DI use</a></span></td>
+                                                <td class="d-none d-md-table-cell">IN, OUT</td>
+                                                <td>5 min</td>
+                                                <td>15 min</td>
+                                                <td>
+                                                    <span>
+                                                        <a href="/troubleshoot?gateway_eui=58A0CBFFFE803FE2">
+                                                            <span class="">
+                                                                <i class="fas fa-wifi" id="device-6b-39-67-01-health-wifi-icon" style="color: rgb(204, 0, 0);"></i>
+                                                            </span>
+                                                        </a>
+                                                        <span class="">
+                                                            <i class="fas fa-battery-full fa-rotate-270" id="device-6b-39-67-01-health-battery-icon" style="color: rgb(0, 153, 51);"></i>
+                                                        </span>
+                                                        <span class="">
+                                                            <i class="fas fa-weight-hanging" id="device-6b-39-67-01-health-pressure-icon" style="color: rgb(128, 128, 128);"></i>
+                                                        </span>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr class="align-middle">
+                                                <td>81:39:77:01</td><td>Voltea</td><td><span><a href="/assets/943/dashboard">Gen 3 Option 4 Prototype 1 </a></span></td><td class="d-none d-md-table-cell">IN, OUT</td><td>5 min</td><td>15 min</td><td><span><a href="/troubleshoot?gateway_eui=58A0CBFFFE803FE2"><span class=""><i class="fas fa-wifi" id="device-81-39-77-01-health-wifi-icon" style="color: rgb(204, 0, 0);"></i></span></a><span class=""><i class="fas fa-battery-full fa-rotate-270" id="device-81-39-77-01-health-battery-icon" style="color: rgb(0, 153, 51);"></i></span><span class=""><i class="fas fa-weight-hanging" id="device-81-39-77-01-health-pressure-icon" style="color: rgb(128, 128, 128);"></i></span></span></td>
+                                            </tr>
+                                        </tbody> -->
+                                    </table>
+                                </div>
+                            </div>                           
+                        </div>
                     </div>
 
                 </div>
@@ -182,49 +279,7 @@
                 </b-modal>
             </div> -->
         </div>
-       
-
-
-        <div id="modal-addNewDevice" v-show="openAddModelClicked" class="modal fade"  >
-            <div class="modal-dialog modal-fullscreen">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Add New Device</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <i class="bi bi-cpu"></i> {{"Device Details"}}
-                                    </div>
-                                    <form class="row g-3 p-1">
-
-                                        <div class="col-md-6">
-                                            <div class="form-floating">
-                                                <input v-model="device.serial_number" type="number" class="form-control" id="pcb_serial_number" placeholder="PCB Serial Number">
-                                                <label for="pcb_serial_number">PCB Serial Number <span class="mandatory">*</span></label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-floating">
-                                                <input v-model="device.device_number" type="text" class="form-control" id="device_serial_number" placeholder="Device Serial Number">
-                                                <label for="device_serial_number">Device Serial Number <span class="mandatory">*</span></label>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary mr-auto" @click="create">Save</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+    
 
     </main>
 
@@ -322,6 +377,15 @@ import router from '@/router'
                         console.log(error)
                     })
                 }
+            },
+            // check window height change
+            onResize() {
+                this.windowHeight = window.innerHeight
+                console.log('resized to'+ this.windowHeight)
+                if(this.windowHeight < 500)
+                    this.mobile_view = true
+                else
+                    this.mobile_view = false
             }
         },
         data() {
@@ -338,11 +402,17 @@ import router from '@/router'
                 devices:[],
                 filter:'',
                 openAddModelClicked: false,
-
+                windowHeight: window.innerHeight,
+                mobile_view:false,
             }
         },
         mounted(){
-            console.log("ready")
+            console.log("Home mounted.")
+            this.onResize()
+            // get window height
+            this.$nextTick(() => {
+                window.addEventListener('resize', this.onResize);
+            })
             // get authenticated user details
             // const user = axios.post('/me').then(response=>{
             //     console.log(response)
@@ -390,6 +460,9 @@ import router from '@/router'
                 return hasIdMatch || hasNameMatch;
             })
             }
+        },
+        beforeDestroy() { 
+            window.removeEventListener('resize', this.onResize); 
         },
 
     };

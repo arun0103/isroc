@@ -245,7 +245,7 @@
     // //   AppLayoutLinks
     // }
     mounted(){
-      console.log("ready")
+      console.log("Home layout ready")
       // get authenticated user details
       const user = axios.post('/me').then(response=>{
           // console.log(response.data)

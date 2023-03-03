@@ -9,7 +9,7 @@ import Distributors from './components/views/Distributors.vue';
 import Members from './components/views/Members.vue';
 import Clients from './components/views/Clients.vue';
 import AppLayoutHome from './components/layouts/AppLayoutHome.vue';
-import NewDevice from './components/common/Modal.vue';
+import NewDevice from './components/device/New.vue';
 import { markRaw } from "vue";
 
 const routes = [
