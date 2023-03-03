@@ -397,7 +397,8 @@ import router from '@/router'
         },
         mounted(){
             console.log("Home mounted.")
-            this.onResize()
+            if(window.innerHeight < 500)
+                this.mobile_view = true
             // get window height
             this.$nextTick(() => {
                 window.addEventListener('resize', this.onResize);
