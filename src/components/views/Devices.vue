@@ -182,7 +182,7 @@
                                                 <th data-field="value1" data-sortable="true">Client </th>
                                                 <th data-field="value2" data-sortable="true">Type</th>
                                                 <th data-field="activation-date" data-sortable="true">Activation Date</th>
-                                                <th data-field="connection" data-sortable="true">Connection</th>
+                                                <th data-field="connection" data-sortable="true" style="text-align:center">Connection</th>
                                                 <th data-field="status" data-sortable="true" style="text-align:center">Status</th>
                                                 <th data-field="info" data-sortable="false"></th>
                                             </tr>

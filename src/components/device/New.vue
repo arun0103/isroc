@@ -13,13 +13,13 @@
                 </div>
                 <div class="card-body">
                     <div class="row g-3 p-1">
-                        <div class="col-md-6">
+                        <div class="col-md-6 col-sm-12">
                             <div class="form-floating">
                                 <input v-model="device.serial_number" type="number" class="form-control" id="pcb_serial_number" placeholder="PCB Serial Number">
                                 <label for="pcb_serial_number">PCB Serial Number <span class="mandatory">*</span></label>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 col-sm-12">
                             <div class="form-floating">
                                 <input v-model="device.device_number" type="text" class="form-control" id="device_serial_number" placeholder="Device Serial Number">
                                 <label for="device_serial_number">Device Serial Number <span class="mandatory">*</span></label>
