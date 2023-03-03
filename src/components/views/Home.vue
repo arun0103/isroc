@@ -172,43 +172,32 @@
                         </div>
                         <div class="row" v-show="!mobile_view">
                             <div class="col-sm-12 col-md-12">
-
                                 <div class="react-bootstrap-table table-responsive" style="width:100%">
                                     <table class="table table-striped table-hover table-sm" style="font-size:14px !important">
                                         <thead>
                                             <tr>
-                                                <!-- <th data-field="check" data-sortable="false"><input class="form-check-input" type="checkbox" id="check_all"></th> -->
                                                 <th data-field="code" data-sortable="true">Device Name</th>
                                                 <th data-field="id" data-sortable="true">Device ID</th>
                                                 <th data-field="distributor" data-sortable="true">Distributor</th>
                                                 <th data-field="value1" data-sortable="true">Client </th>
                                                 <th data-field="value2" data-sortable="true">Type</th>
-                                                <!-- <th data-field="streams" data-sortable="true">Streams <i class="bi bi-info-circle" style="color:green"></i></th> -->
                                                 <th data-field="activation-date" data-sortable="true">Activation Date</th>
                                                 <th data-field="connection" data-sortable="true">Connection</th>
                                                 <th data-field="status" data-sortable="true">Status</th>
                                                 <th data-field="info" data-sortable="false"></th>
                                             </tr>
-                                            <!-- <tr>
-                                                <th tabindex="0" aria-label="Device ID sortable" class="sortable text-nowrap">Device ID<span class="order-4"></span></th>
-                                                <th tabindex="1" aria-label="Client sortable" class="sortable">Client<span class="order-4"></span></th>
-                                                <th tabindex="2" aria-label="Asset sortable" class="sortable">Asset<span class="order-4"></span></th>
-                                                <th tabindex="3" aria-label="Stream(s) sortable" class="sortable d-none d-md-table-cell"><span style="display: flex;">Stream(s) <span class=""><i class="far fa-question-circle mx-1" id="icon-with-tooltip--1797539030"></i></span> <span class="order-4"></span></span></th>
-                                                <th tabindex="4" aria-label="Sample Rate Flow sortable" class="sortable"><span style="display: flex;">Sample Rate Flow <span class=""><i class="far fa-question-circle mx-1" id="icon-with-tooltip-1210011700"></i></span> <span class="order-4"></span></span></th>
-                                                <th tabindex="5" aria-label="Sample Rate Pressure sortable" class="sortable"><span style="display: flex;">Sample Rate Pressure <span class=""><i class="far fa-question-circle mx-1" id="icon-with-tooltip-719470182"></i></span> <span class="order-4"></span></span></th>
-                                                <th tabindex="6" aria-label="Health Status sortable" class="sortable"><span style="display: flex;">Health Status <span class=""><i class="far fa-question-circle mx-1" id="icon-with-tooltip-1656819792"></i></span> <span class="order-4"></span></span></th>
-                                            </tr> -->
                                         </thead>
                                         <tbody>
-                                            <tr class="align-middle">
-                                                <!-- <td><input class="form-check-input" type="checkbox" id="check_1"></td> -->
-                                                <td><a href="{{route('asset_dashboard','1') }}">Voltea Prototype 1 </a></td>
-                                                <td>1</td>
-                                                <td><a href="{{route('distributor','1') }}">ABC Distributor</a></td>
-                                                <td><a href="">ABC</a></td>
+                                            <tr class="align-middle" v-for="(device,key) in filteredDevices" :key="key">
+                                                <td>
+                                                    <router-link  :to='{name:"device_detail",params:{id:device.id}}'><span id="device_name">{{ device.name == null?"No Name": device.name }}</span></router-link>
+                                                </td>       
+                                                <td>{{ device.device_number }}</td>
+                                                <td>{{ device.distributor_id == null ? "N/A" : device.distributor_id }}</td>
+                                                <td>{{ device.client_id == null ? "N/A" : device.client_id }}</td>
                                                 <td>HPC</td>
                                                 <td>1/12/2021</td>
-                                                <td style="text-align:center"><i class="ri ri-wifi-fill fa-lg" style="color:green"></i><span hidden>Online</span> </td>
+                                                <td style="text-align:center"><i class="ri ri-wifi-fill fa-lg" style="color:green"></i><span hidden>{{device.status}}</span> </td>
                                                 <td style="text-align:center">
                                                     <i class="bi bi-shield-fill-exclamation fa-lg" style="color:#ffc107"></i><span class="info_status" hidden>Warning</span>
                                                     <!-- <i id="battery" class="bi bi-battery-full"></i> -->
@@ -217,23 +206,7 @@
                                                     <a href=""><i class="link_asset_detail bi bi-vector-pen"></i></a>
                                                 </td>
                                             </tr>
-                                            <tr class="align-middle">
-                                                <!-- <td><input class="form-check-input" type="checkbox" id="check_2"></td> -->
-                                                <td>Voltea Prototype 2</td>
-                                                <td>2</td>
-                                                <td>XYZ Distributor</td>
-                                                <td>XYZ</td>
-                                                <td>Test Model</td>
-                                                <td>29/01/2022</td>
-                                                <td style="text-align:center"><i class="ri ri-wifi-off-fill fa-lg" style="color:red"></i><span hidden>Offline</span> </td>
-                                                <td style="text-align:center">
-                                                    <i class="bi bi-shield-fill-check fa-lg" style="color:green"></i><span class="info_status" hidden>OK</span>
-                                                    <!-- <i id="battery" class="bi bi-battery-half"></i> -->
-                                                </td>
-                                                <td>
-                                                    <i class="link_asset_detail bi bi-vector-pen"></i>
-                                                </td>
-                                            </tr>
+                                            
                                         </tbody>
                                         <!-- <tbody>
                                             <tr class="align-middle">
