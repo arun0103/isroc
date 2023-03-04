@@ -97,7 +97,7 @@
                                     </tr> -->
                                     <tr class="align-middle">
                                         <td>1</td>
-                                        <td><a href="{{route('distributor','1') }}">Dummy Distributor </a> </td>
+                                        <td><router-link to="/distributor/detail/1">Dummy Distributor </router-link> </td>
                                         <td>dummy@distributor.com</td>
                                         <td>123 street, Abc City, Nepal</td>
                                         <td><a href="">2</a></td>

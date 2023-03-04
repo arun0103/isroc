@@ -11,6 +11,7 @@ import Clients from './components/views/Clients.vue';
 import AppLayoutHome from './components/layouts/AppLayoutHome.vue';
 import NewDevice from './components/device/New.vue';
 import DeviceDetail from './components/device/Detail.vue';
+import DistributorDetail from './components/distributor/Detail.vue';
 import { markRaw } from "vue";
 
 const routes = [
@@ -82,7 +83,13 @@ const routes = [
     name: 'device_detail',
     component: markRaw(DeviceDetail),
     meta: { requiresAuth: true, layout: 'AppLayoutHome'  }
-  }
+  },
+  {
+    path: '/distributor/detail/:id',
+    name: 'distributor_detail',
+    component: markRaw(DistributorDetail),
+    meta: { requiresAuth: true, layout: 'AppLayoutHome'  }
+  },
 ];
 
 const router = createRouter({

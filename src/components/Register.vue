@@ -135,13 +135,13 @@ export default{
     },
     async registerUser(){
       // if(this.validateUserDetails()){
-        console.log("user details validated: true")
+        // console.log("user details validated: true")
         const response = await axios.post('/register', {
           name: this.name,
           email: this.email,
           password: this.password
         })
-        .then(function(response){
+        .then(response=>{
           this.status = false;
           // Store the JWT token in local storage or a cookie
           const token = response.data.access_token;
@@ -151,9 +151,10 @@ export default{
           router.push({ name: 'home' });
         }).catch(error=>{
           this.status = true
-          // console.log(error.response.data)
+          console.log(error)
           let errors = error.response.data
           console.log(errors)
+
           if(errors?.name){
             console.log("Name error: "+errors['name'])
             this.error_name = errors['name']
@@ -166,7 +167,8 @@ export default{
               this.error_email = "Please enter your valid email."
             else if(this.error_email == "The email has already been taken.")
               this.error_email = "This email is already registered in our server."
-          }else
+          }
+          else
             this.error_email = ''
           if(errors?.password)
             this.error_password = errors['password']
