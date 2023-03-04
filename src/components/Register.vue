@@ -45,7 +45,9 @@
                             <span class="input-group-text" id="inputGroupPrepend"><span class="bi bi-envelope"></span></span>
                             <input type="email" name="userEmail" class="form-control" id="userEmail" autocomplete="new-email" required v-model="email"><br>
                           </div>
-                          <div class="error" v-show="this.error_email !=''">Please enter your valid email.</div>
+                          <div class="error" v-show="this.error_email !=''">
+                            <p>{{this.error_email}}</p>
+                          </div>
                         </div>
     
                         <div class="col-12">
@@ -157,9 +159,14 @@ export default{
             this.error_name = errors['name']
           }else
             this.error_name = ''
-          if(errors?.email)
+          if(errors?.email){
             this.error_email = errors['email']
-          else
+            console.log("Email error: "+this.error_email)
+            if(this.error_email == "The email field is required.")
+              this.error_email = "Please enter your valid email."
+            else if(this.error_email == "The email has already been taken.")
+              this.error_email = "This email is already registered in our server."
+          }else
             this.error_email = ''
           if(errors?.password)
             this.error_password = errors['password']

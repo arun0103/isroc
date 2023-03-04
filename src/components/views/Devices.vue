@@ -57,8 +57,7 @@
     }
 </style>
 <template>
-    <main class="main" id="main">
-       
+    <main class="main" id="main"> 
         <div class="row first">
             <div class="col-sm-12 col-md-12">
                 <div class="card" style="background-color:white">
@@ -80,7 +79,8 @@
                                 </span>
                             </div>
                         </div>
-                        <h5 class="card-title"><i class="fa fa-sink"></i>
+                        <h5 class="card-title">
+                            <i class="fa fa-sink"></i>
                             All Devices [{{ devices.length }}]
                             <button @click="openAddDeviceModal" id="btn_add_new_device" class="btn btn-sm btn-primary" style="float:right">Add new</button>
                         </h5>
@@ -260,25 +260,36 @@
 
                 </div>
             </div> 
-            <!-- <div>
-                <b-button v-b-modal.modal-1>Launch demo modal</b-button>
-            
-                <b-modal id="modal-1" title="BootstrapVue">
-                <p class="my-4">Hello from modal!</p>
-                </b-modal>
-            </div> -->
         </div>
-    
 
     </main>
 
 </template>
 
 <script>
-import axios from 'axios';
-import router from '@/router'
-    export default {
+    import axios from 'axios';
+    import router from '@/router'
 
+    export default {
+        data() {
+            return {
+                online_devices_count: 0,
+                offline_devices_count: 0,
+                warning_devices_count: 0,
+                message: 'Code by Arun Amatya',
+                device_name :"",
+                device:{
+                    'serial_number':"",
+                    'device_number':""
+                },
+                devices:[],
+                filter:'',
+                openAddModelClicked: false,
+                windowHeight: window.innerHeight,
+                mobile_view:false,
+                
+            }
+        },
         methods:{
             // open a model on button click
             openAddDeviceModal(){
@@ -370,36 +381,21 @@ import router from '@/router'
             // check window height change
             onResize() {
                 this.windowHeight = window.innerHeight
-                console.log('resized to'+ this.windowHeight)
+                // console.log('resized to'+ this.windowHeight)
                 if(this.windowHeight >window.innerWidth)
                     this.mobile_view = true
                 else
                     this.mobile_view = false
             }
         },
-        data() {
-            return {
-                online_devices_count: 0,
-                offline_devices_count: 0,
-                warning_devices_count: 0,
-                message: 'Code by Arun Amatya',
-                device_name :"",
-                device:{
-                    'serial_number':"",
-                    'device_number':""
-                },
-                devices:[],
-                filter:'',
-                openAddModelClicked: false,
-                windowHeight: window.innerHeight,
-                mobile_view:false,
-            }
-        },
         mounted(){
             console.log("Home mounted.")
             if(window.innerHeight >window.innerWidth)
                 this.mobile_view = true
-            // get window height
+            else
+                this.mobile_view = false
+            
+                // get window height
             this.$nextTick(() => {
                 window.addEventListener('resize', this.onResize);
             })
@@ -415,11 +411,11 @@ import router from '@/router'
             //     // console.log("searching");
             //     table.search( this.value ).draw();
             // } );
-            $('#btn_add_new_device').on('click',function(){
-                console.log("MODAL OPEN jquery")
-                // document.getElementById('modal-addNewDevice').show()
-                // $('#modal-addNewDevice').modal()
-            })
+            // $('#btn_add_new_device').on('click',function(){
+            //     console.log("MODAL OPEN jquery")
+            //     // document.getElementById('modal-addNewDevice').show()
+            //     // $('#modal-addNewDevice').modal()
+            // })
             // $('#btn-onlineDevices').on('click',function(){
             //     console.log("Online Devices")
             //     $('#search-bar-0').val("online")
@@ -456,7 +452,5 @@ import router from '@/router'
         },
 
     };
-    // Vue.component("modal", {
-    //     template: "#modal-addNewDevice"
-    // });
+    
 </script>
